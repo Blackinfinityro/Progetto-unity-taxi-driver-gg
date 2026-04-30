@@ -2,9 +2,11 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags:
   - Collisions
+  - triggerSpawnRoad
+  - triggerDestroyRoad
   layers:
   - Default
   - TransparentFX
@@ -39,12 +41,8 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: strada
-    uniqueID: 3149868667
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: auto
-    uniqueID: 547659553
-    locked: 0
+  m_RenderingLayers:
+  - Default
