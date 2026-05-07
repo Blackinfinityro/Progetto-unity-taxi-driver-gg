@@ -15,7 +15,6 @@ public class playermovement : MonoBehaviour
     {
         input = new CustomInput();
         rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
 
 
