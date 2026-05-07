@@ -6,14 +6,14 @@ using UnityEngine.UIElements;
 public class roadMovement : MonoBehaviour
 {
     score istanzaScore;
-    
+    [SerializeField] float moltiplicatoreMovimento = 0;
     void Start() {
         istanzaScore = FindAnyObjectByType<score>();
     }
 
     void Update()
     {
-        int velocità = -1*istanzaScore.punteggio;
+        float velocità = -1*moltiplicatoreMovimento*istanzaScore.punteggio;
         transform.Translate(velocità*Time.deltaTime, 0, 0); 
     }
 }

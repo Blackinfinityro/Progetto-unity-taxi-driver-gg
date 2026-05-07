@@ -5,11 +5,17 @@ using UnityEngine.InputSystem;
 
 public class playermovement : MonoBehaviour
 {
+    private Rigidbody rb;
     private CustomInput input = null;
+    [SerializeField] int velocita = 0;
+    [SerializeField] float limiteSinistra = -5f;
+    [SerializeField] float limiteDestra = 5f;
 
     private void Awake()
     {
         input = new CustomInput();
+        rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
 
 
@@ -23,10 +29,17 @@ public class playermovement : MonoBehaviour
         input.Disable();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        transform.Translate(input.Player.Movement.ReadValue<Vector2>().x * 5 * Time.deltaTime * Vector2.right);
-    }   
+        float inputX = input.Player.Movement.ReadValue<Vector2>().x;
+        float nuovaPosizioneX = transform.position.x + inputX * Time.fixedDeltaTime * velocita;
+
+        nuovaPosizioneX = Mathf.Clamp(nuovaPosizioneX, limiteSinistra, limiteDestra);
+
+        Vector3 nuovaPosizione = new Vector3(nuovaPosizioneX, transform.position.y, transform.position.z);        
+        
+        rb.MovePosition(nuovaPosizione);
+    }
 
     void OnDestroy()
     {
