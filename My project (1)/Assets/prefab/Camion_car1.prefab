@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4030774827436542421}
   - component: {fileID: 6460185357247212171}
+  - component: {fileID: 5514456261373925274}
+  - component: {fileID: -6394585560158441210}
+  - component: {fileID: 3218712275140148239}
   m_Layer: 0
   m_Name: Camion_car1
   m_TagString: Untagged
@@ -87,3 +90,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5514456261373925274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550837926557530229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9534a598c303584a8a6ad3f85263ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moltiplicatoreMovimento: 0.4
+--- !u!65 &-6394585560158441210
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550837926557530229}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.34999996, y: 0.6999999, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3218712275140148239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550837926557530229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c153ba7157dcb49ac5ddf714f63d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

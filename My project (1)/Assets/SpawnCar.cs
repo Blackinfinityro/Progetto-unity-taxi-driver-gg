@@ -7,18 +7,33 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] Transform[] spawnPoint;
     [SerializeField] int timer;
     [SerializeField] bool moltiplicatore;
-     void Start()
-    {
-        StartCoroutine(SpawnRoutine());
-    }
+    score istanzaScore;
+    roadMovement istanzaVelocità;
 
-    IEnumerator SpawnRoutine()
+     IEnumerator Start()
     {
-        while (true)
+        istanzaScore = FindAnyObjectByType<score>();
+        istanzaVelocità = FindAnyObjectByType<roadMovement>();
+
+        if (moltiplicatore == true)
         {
-            SpawnRandomCar();
-            yield return new WaitForSeconds(timer);
+            yield return null;
+            while (true)
+            {
+                SpawnRandomCar();
+                Debug.Log($"attesa: {timer*10/istanzaVelocità.velocità}");
+                yield return new WaitForSeconds(timer/Mathf.Abs(istanzaVelocità.velocità));
+            }
+        } else
+        {
+            while (true)
+            {
+                SpawnRandomCar();
+                yield return new WaitForSeconds(timer);
+            }
         }
+        
+        
     }
     void SpawnRandomCar()
     {
