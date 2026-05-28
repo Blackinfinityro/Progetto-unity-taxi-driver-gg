@@ -5,7 +5,7 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] GameObject[] cars;
     [SerializeField] Transform[] spawnPoint;
-    [SerializeField] int timer;
+    [SerializeField] float timer;
     [SerializeField] bool moltiplicatore;
     score istanzaScore;
     roadMovement istanzaVelocità;
@@ -14,6 +14,8 @@ public class SpawnManager : MonoBehaviour
     {
         istanzaScore = FindAnyObjectByType<score>();
         istanzaVelocità = FindAnyObjectByType<roadMovement>();
+        
+        yield return new WaitForSeconds(3);
 
         if (moltiplicatore == true)
         {
@@ -28,8 +30,8 @@ public class SpawnManager : MonoBehaviour
         {
             while (true)
             {
-                SpawnRandomCar();
                 yield return new WaitForSeconds(timer);
+                SpawnRandomCar();
             }
         }
         
