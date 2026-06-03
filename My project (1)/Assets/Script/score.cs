@@ -1,9 +1,16 @@
 using UnityEngine;
 using System.Collections;
 
-public class score : MonoBehaviour
+public class Score : MonoBehaviour
 {
+    public static Score Instance;
+
     public int punteggio = 0;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -15,7 +22,6 @@ public class score : MonoBehaviour
         while (true)
         {
             punteggio += 1;
-            Debug.Log(punteggio);
             yield return new WaitForSeconds(1f);
         }
     }

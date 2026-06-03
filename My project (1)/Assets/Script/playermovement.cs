@@ -7,7 +7,8 @@ public class playermovement : MonoBehaviour
 {
     private Rigidbody rb;
     private CustomInput input = null;
-    [SerializeField] int velocita = 0;
+    
+    [SerializeField] float velocita = 5f; 
     [SerializeField] float limiteSinistra = -5f;
     [SerializeField] float limiteDestra = 5f;
 
@@ -16,7 +17,6 @@ public class playermovement : MonoBehaviour
         input = new CustomInput();
         rb = GetComponent<Rigidbody>();
     }
-
 
     private void OnEnable()
     {
@@ -31,16 +31,17 @@ public class playermovement : MonoBehaviour
     void FixedUpdate()
     {
         float inputX = input.Player.Movement.ReadValue<Vector2>().x;
-        float nuovaPosizioneX = transform.position.x + inputX * Time.fixedDeltaTime * velocita;
+        
+        float nuovaPosizioneX = rb.position.x + inputX * velocita * Time.fixedDeltaTime;
 
         nuovaPosizioneX = Mathf.Clamp(nuovaPosizioneX, limiteSinistra, limiteDestra);
 
-        Vector3 nuovaPosizione = new Vector3(nuovaPosizioneX, transform.position.y, transform.position.z);        
-        
+        Vector3 nuovaPosizione = new Vector3(nuovaPosizioneX, rb.position.y, rb.position.z);
+                        
         rb.MovePosition(nuovaPosizione);
     }
 
-    void OnDestroy()
+    private void OnDestroy()
     {
         input.Dispose();
     }

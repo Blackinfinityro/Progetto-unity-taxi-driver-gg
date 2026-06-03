@@ -11,7 +11,7 @@ public class SpawnRoad : MonoBehaviour
     void Start()
     {
         var manager = FindAnyObjectByType<SpawnRoad>();
-        Instantiate(CentralRoadPrefab, Vector3.zero, Quaternion.Euler(0, 0, 90f));
+        Instantiate(CentralRoadPrefab, Vector3.zero, Quaternion.Euler(270f, 180f, 90f));
     }
 
     // Update is called once per frame

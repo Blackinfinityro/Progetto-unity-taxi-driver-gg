@@ -3,72 +3,81 @@ using System.Collections;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] GameObject[] cars;
-    [SerializeField] Transform[] spawnPoint;
-    [SerializeField] float timer;
-    [SerializeField] bool moltiplicatore;
-    score istanzaScore;
-    roadMovement istanzaVelocità;
+    [SerializeField] private GameObject[] cars;
+    [SerializeField] private Transform[] spawnPoint;
+    [SerializeField] private float timer = 1f;
+    [SerializeField] private bool moltiplicatore = false;
 
-     IEnumerator Start()
+    private Score istanzaScore;
+    private roadMovement istanzaVelocità;
+
+    IEnumerator Start()
     {
-        istanzaScore = FindAnyObjectByType<score>();
+        istanzaScore = FindAnyObjectByType<Score>();
         istanzaVelocità = FindAnyObjectByType<roadMovement>();
-        
-        yield return new WaitForSeconds(3);
 
-        if (moltiplicatore == true)
+        yield return new WaitForSeconds(3f);
+
+        while (true)
         {
-            yield return null;
-            while (true)
+            SpawnRandomCar();
+
+            if (moltiplicatore)
             {
-                SpawnRandomCar();
-                Debug.Log($"attesa: {timer*10/istanzaVelocità.velocità}");
-                yield return new WaitForSeconds(timer/Mathf.Abs(istanzaVelocità.velocità));
+                float attesa = timer / Mathf.Abs(istanzaVelocità.velocità);
+                Debug.Log($"Attesa: {attesa}");
+                yield return new WaitForSeconds(attesa);
             }
-        } else
-        {
-            while (true)
+            else
             {
                 yield return new WaitForSeconds(timer);
-                SpawnRandomCar();
             }
         }
-        
-        
     }
+
+    void SpawnCar(int spawnIndex)
+    {
+        int randomCarIndex = Random.Range(0, cars.Length);
+
+        Instantiate(
+            cars[randomCarIndex],
+            spawnPoint[spawnIndex].position,
+            spawnPoint[spawnIndex].rotation
+        );
+    }
+
     void SpawnRandomCar()
     {
         int randomIndexSpawn = Random.Range(0, 6);
-        if (randomIndexSpawn == 0)
+
+        switch (randomIndexSpawn)
         {
-            int randomIndexCar = Random.Range(0, cars.Length);
-            Instantiate(cars[randomIndexCar], spawnPoint[0].position, spawnPoint[0].rotation);
-        } else if (randomIndexSpawn == 1)
-        {
-            int randomIndexCar = Random.Range(0, cars.Length);
-            Instantiate(cars[randomIndexCar], spawnPoint[1].position, spawnPoint[1].rotation);
-        } else if (randomIndexSpawn == 2)
-        {
-            int randomIndexCar = Random.Range(0, cars.Length);
-            Instantiate(cars[randomIndexCar], spawnPoint[2].position, spawnPoint[2].rotation);
-        } else if (randomIndexSpawn == 3)
-        {
-            int randomIndexCar = Random.Range(0, cars.Length);
-            Instantiate(cars[randomIndexCar], spawnPoint[0].position, spawnPoint[0].rotation);
-            int randomIndexCar2 = Random.Range(0, cars.Length);
-            Instantiate(cars[randomIndexCar2], spawnPoint[1].position, spawnPoint[1].rotation);
-        } else if (randomIndexSpawn == 4)
-        {
-            int randomIndexCar = Random.Range(0, cars.Length);
-            Instantiate(cars[randomIndexCar], spawnPoint[0].position, spawnPoint[0].rotation);  
-            int randomIndexCar2 = Random.Range(0, cars.Length);
-            Instantiate(cars[randomIndexCar], spawnPoint[2].position, spawnPoint[2].rotation);
-        } else if (randomIndexSpawn == 5){
-            int randomIndexCar = Random.Range(0, cars.Length);
-            Instantiate(cars[randomIndexCar], spawnPoint[1].position, spawnPoint[1].rotation);
-            int randomIndexCar2 = Random.Range(0, cars.Length);
-            Instantiate(cars[randomIndexCar], spawnPoint[2].position, spawnPoint[2].rotation);
+            case 0:
+                SpawnCar(0);
+                break;
+
+            case 1:
+                SpawnCar(1);
+                break;
+
+            case 2:
+                SpawnCar(2);
+                break;
+
+            case 3:
+                SpawnCar(0);
+                SpawnCar(1);
+                break;
+
+            case 4:
+                SpawnCar(0);
+                SpawnCar(2);
+                break;
+
+            case 5:
+                SpawnCar(1);
+                SpawnCar(2);
+                break;
         }
     }
 }

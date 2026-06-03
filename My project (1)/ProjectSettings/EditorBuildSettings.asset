@@ -4,5 +4,15 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: "Assets/Scenes/Men\xF9.unity"
+    guid: ae5775f1b1243f54c96919ce982b24da
+  - enabled: 1
+    path: Assets/Scenes/Gioco.unity
+    guid: da64bd0a19a9ef041b65a7de57960556
+  - enabled: 1
+    path: Assets/Scenes/Video.unity
+    guid: ae2004fa607cd4ad0b0f38a7ea2a30a6
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
