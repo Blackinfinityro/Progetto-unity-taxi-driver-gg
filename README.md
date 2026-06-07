@@ -101,8 +101,3 @@ Aprire il progetto tramite Unity Hub utilizzando una versione compatibile di Uni
 * Ottenere il punteggio più alto.
 * Migliorare il proprio record personale.
 
-## Autore
-
-Rosario Tabone
-
-Progetto realizzato come esperienza di sviluppo videoludico con Unity, focalizzato sulla programmazione gameplay, sulla generazione procedurale e sulla progettazione dell'interfaccia utente.
